@@ -1,0 +1,21 @@
+{% load static ngpt_filter %}
+
+<article class="message is-info qst">
+                        
+    
+    <div class="message-body">
+        <div class="dtime">{{qst.dt_record}}</div>   
+        <div class="line">                   
+            {{qst.question}}
+        </div>
+        Пользователи чьи вопросы совпали с текущим:
+        <div class="usrs">{{qst.question|qst_exist}}</div>
+        {% if new_qst %}
+            <button class="button is-ghost ans__view">получить ответ</button>
+        {% endif %}
+    </div>
+    
+</article>
+<article class="message is-primary ans  {% if new_qst %}hidden{% endif %}">
+<div class="message-body">{{qst.answer}}</div>
+</article>

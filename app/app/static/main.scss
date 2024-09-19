@@ -1,0 +1,36 @@
+@import "assets/bulma/bulma.sass";
+
+$fa-font-path: 'assets/fontawesome/webfonts';
+@import "assets/fontawesome/scss/fontawesome.scss";
+@import 'assets/fontawesome/scss/solid.scss';
+@import 'assets/fontawesome/scss/brands.scss';
+@import 'assets/fontawesome/scss/_core.scss';
+
+// Test scss work 
+// .rocket {
+//     &:before {
+//         content: "\f135";
+//         font-family: "Font Awesome 6 Free";
+//         margin-right: 15px;
+//     }
+// }
+
+.ngpt-login {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35em;
+    top: 30%;
+    form {
+        width: 100%;
+    }
+}
+
+.login__grid {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    .cell:first-child  {
+        font-size: large;
+    }
+}

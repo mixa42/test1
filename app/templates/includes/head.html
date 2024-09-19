@@ -1,0 +1,12 @@
+{% load static %}
+{% load compress %}
+<!-- <link rel="stylesheet" href="{% static 'assets/jquery-ui-1.13.2/jquery-ui.min.css' %}"> -->
+
+<script src="{% static 'assets/jquery-ui-1.13.2/jquery-3.7.0.min.js' %}"></script>
+<script src="{% static 'assets/jquery-ui-1.13.2/jquery-ui.min.js' %}"></script>
+
+{% compress css %}
+            <link type="text/x-scss" href="{% static 'main.scss' %}" rel="stylesheet" media="screen"> 
+{% endcompress %}
+
+

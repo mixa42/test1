@@ -1,0 +1,60 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    {% comment %}
+    <a class="navbar-item" href="/">
+        <div class="logo"></div>
+    </a>{% endcomment %}
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      {% comment %}
+      <a href='/' class="navbar-item">
+        Home
+      </a>
+
+      <a href='/nlab_dli/' class="navbar-item">
+        НЛАБ
+      </a>
+      <a href='/admin/' class="navbar-item">
+        ADMIN
+      </a> {% endcomment %}
+
+    </div>
+    {% comment %} TODO когда добавится авторизация  {% endcomment %}
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons columns">
+          {% if user.pk %}
+          
+          <div class="column">
+            <b>{{user}}</b><br>
+            <i><span>{{client_ip}}</span></i>
+          </div>
+          <div class="column">
+            <a href="/logout/" class="button is-light">
+              Log out
+            </a>
+          </div>
+
+
+          {% else %}
+          <div class="column">
+            <a href="/admin/login/?next=/nlab_dli/" class="button is-light">
+              Log in
+            </a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</nav>

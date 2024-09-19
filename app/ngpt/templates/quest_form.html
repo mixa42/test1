@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static ngpt_filter %}
+
+{% load compress %}
+
+
+{% block head %}
+    {% compress css %}
+                <link type="text/x-scss" href="{% static 'main__ngpt.scss' %}" rel="stylesheet" media="screen"> 
+    {% endcompress %}
+{% endblock head %}
+
+
+{% block body %}
+<div class="grid">
+    {% comment %} <div class="container users__groups">
+        {% for user in users_list %}
+        <p>
+            {{ user.username }}
+            {{ user.profile_image }}
+            {{ user.pk|quest_count }}
+        </p>
+        {% endfor %} 
+    </div> {% endcomment %}
+
+    <div class='container chat__history'>
+        <form method="GET"> 
+            {% csrf_token %}
+            <div class="mb-4"><input class="input is-success"
+                placeholder="Задай вопрос" name="question" type="text"> 
+            </div>
+        </form>
+        <div>
+            {% if questions %}
+                <div class="chat__block">
+                {% for qst in questions  %}
+                    {% include "question.html" %}
+                {% endfor %}
+                </div>
+            {% else %}
+                <div class="clean__chat_block">
+                Еще нет вопросов
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+
+</div>
+{% endblock body %}
+
+{% block scripts %}
+<script>
+$(document).on('change','[name="question"]', function() {
+    var vthat = this;
+    $.ajax({
+        type: "POST",
+        url: '/',
+        headers: {'X-CSRFToken': '{{ csrf_token }}'},
+        contentType: "application/json",
+        dataType: "html",
+        data: JSON.stringify({
+            'new_q':this.value,
+        }),
+        success: function (response) {
+            vthat.value = '';
+            console.log(response);
+            if ( $('.clean__chat_block').length>0 ) {
+                var ccb =  $('.clean__chat_block')
+                $(ccb).html('');
+                $(ccb).addClass('chat__block');
+                $(ccb).removeClass('clean__chat_block');
+
+            }
+
+
+            $('.chat__block').prepend(response)
+        }
+    });
+})
+
+$(document).on('click', '.ans__view', function(){
+    $(this).remove();
+    $('.chat__block .ans,.hidden').removeClass('hidden');
+});
+
+
+$('textarea').keyup(function(e){
+    if(e.keyCode == 13)
+    {
+        $('[name="question"]').trigger('change')
+    }
+});
+</script>
+{% endblock scripts %}

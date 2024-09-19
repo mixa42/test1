@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "nlab_dli"
+version = "0.2.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Django = "4.2"
+django-compressor = "^4.4"
+django-libsass = "^0.9"
+psycopg2-binary = "^2.9.9"
+pydantic = "^2.9.2"
+
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

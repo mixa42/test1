@@ -1,0 +1,6 @@
+.venv
+.vscode
+poetry.lock
+__pycache__
+app/static/
+migrations

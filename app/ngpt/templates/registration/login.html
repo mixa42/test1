@@ -1,0 +1,54 @@
+<!-- templates/registration/login.html -->
+{% include "includes/head.html" %} 
+
+
+
+
+<div class="ngpt-login">
+    <nav class="panel is-dark">
+        <p class="panel-heading">Молви друг и войди</p>
+        <div class="panel-block">
+        <form method="post" >
+            {% csrf_token %} 
+            
+            {% if form.errors %}
+            <div class="login__grid grid mb-3 mt-3">
+                <div class="cell">
+                    <span class="icon has-text-danger">
+                        <i class="fas fa-bug"></i>
+                    </span>
+                </div>
+                <div class="cell">
+                    <span class="has-text-danger"> {{ form.non_field_errors }}</span>
+                </div>
+            </div>
+            {% endif %}
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                <input class="input"  name="username" type="text" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required=""  placeholder="Username" />
+                <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                </span>
+                <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                </span>
+                </p>
+            </div>
+            <div class="field">
+                <p class="control has-icons-left">
+                <input class="input" type="password" name="password"  autocomplete="current-password" required="" id="id_password" placeholder="Password" />
+                <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                </span>
+                </p>
+            </div>
+
+            <button type="submit" class="button is-link is-outlined is-fullwidth">
+                АВТОРИЗАЦИЯ / РЕГИСТРАЦИЯ
+            </button>
+        </form>
+        </div>
+    </nav>
+</div>
+
+
